@@ -1,4 +1,4 @@
-from math import *
+import math
 
 
 class Customer:
@@ -11,7 +11,7 @@ class Customer:
 
     # decorates the string output of the object
     def __str__(self):
-        return ("user_id: " + str(self.id) + ", latitude: " + self.latitude + ", longitude: " + self.longitude + ", name: " + self.name)
+        return ("user_id: " + str(self.id) + ", name: " + self.name)
 
 
 
@@ -19,17 +19,18 @@ class Customer:
     def distance_from(self, lat, lon):
         lat2, lon2 = lat, lon
 
-        lat1, lon1, lat2, lon2 = map(radians, [self.latitude, self.longitude, lat2, lon2])
+        # get in radians
+        lat1, lon1, lat2, lon2 = map(math.radians, [self.latitude, self.longitude, lat2, lon2])
 
-        dlon = lon2 - lon1
-        dlat = lat2 - lat1
+        total_lon = lon2 - lon1
+        total_lat = lat2 - lat1
 
-        a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-        c = 2 * asin(sqrt(a))
+        a = math.sin(total_lat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(total_lon/2)**2
+        c = 2 * math.asin(math.sqrt(a))
 
-        km = 6371* c
+        in_kilometers = 6371 * c
 
-        return km
+        return in_kilometers
 
 
 

@@ -2,21 +2,29 @@ import json
 import pprint
 from customer import *
 
-users = []
-users_data = json.load(open('customers.json'))
-
-
-def load_data():
-    for data_row in users_data:
+# Load data from JSON and return it as object
+def load_data_from(location):
+    users = []
+    for data_row in json.load(open(location)):
         users.append(Customer(data_row))
+    return users
 
-load_data()
 
-print(len(users))
+# Function that will filter out the customers within 100 km from our Dublin office
+def filter_customers(customers_array):
+    u = filter(lambda customer: customer.is_at_distance_from(100, 53.339428, -6.257664), customers_array)
+    return u
 
-# for user in users:
-#     print(user.is_at_distance_from(100, 53.339428, -6.257664))
 
-u = filter(lambda user: user.is_at_distance_from(100, 53.339428, -6.257664), users)
+# Load the JSON File
+customers = load_data_from('customers.json')
 
-print(len(list(u)))
+# Filter out the customers
+customers = filter_customers(customers)
+
+# We sort the customers in ascending order by the id of them
+customers = sorted(customers, key = lambda customer: customer.id)
+
+# print all the filtered and ordered customers
+for customer in customers:
+    print(customer)
