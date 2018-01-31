@@ -1,6 +1,5 @@
 import json
-import pprint
-from customer import *
+from customer import Customer
 
 # Load data from JSON and return it as object
 def load_data_from(location):
@@ -17,7 +16,7 @@ def filter_customers(customers_array):
 
 
 # Load the JSON File
-customers = load_data_from('customers.json')
+customers = load_data_from('../customers.json')
 
 # Filter out the customers
 customers = filter_customers(customers)
