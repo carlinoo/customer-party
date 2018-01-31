@@ -11,4 +11,3 @@ def load_data():
         users.append(Customer(data_row))
 
 load_data()
-print(users[0])
