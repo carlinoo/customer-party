@@ -15,15 +15,21 @@ def filter_customers(customers_array):
     return u
 
 
-# Load the JSON File
-customers = load_data_from('../customers.json')
+# Function to run the program
+def run():
+    # Load the JSON File
+    customers = load_data_from('../customers.json')
 
-# Filter out the customers
-customers = filter_customers(customers)
+    # Filter out the customers
+    customers = filter_customers(customers)
 
-# We sort the customers in ascending order by the id of them
-customers = sorted(customers, key = lambda customer: customer.id)
+    # We sort the customers in ascending order by the id of them
+    customers = sorted(customers, key = lambda customer: customer.id)
 
-# print all the filtered and ordered customers
-for customer in customers:
-    print(customer)
+    # print all the filtered and ordered customers
+    for customer in customers:
+        print(customer)
+
+
+# Run the program
+run()

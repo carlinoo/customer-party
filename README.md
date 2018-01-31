@@ -1,7 +1,7 @@
 # Customer Party
 
 ### Introduction
-All the test cases are in the /test folder. When running the program, the output of it is the following
+I was asked to create a program to read a JSON file with information about customers. Each customer has a latitude and longitude. I was also given the position of the Dublin Office. I have to read the JSON file, filter out the customers whose location is greater than 100km from the Office in Dublin, and output them like shown below. All the automated test cases are in the /test folder. When running the program, the output is the following:
 
 ``` text
   user_id: 4, name: Ian Kehoe
