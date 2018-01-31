@@ -25,10 +25,13 @@ class Customer:
         total_lon = lon2 - lon1
         total_lat = lat2 - lat1
 
+        # We use haversine formula
         a = math.sin(total_lat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(total_lon/2)**2
         c = 2 * math.asin(math.sqrt(a))
 
+        # Get in kilometers multiplying by the radius of the earth
         in_kilometers = 6371 * c
+
 
         return in_kilometers
 
