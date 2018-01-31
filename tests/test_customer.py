@@ -1,5 +1,6 @@
 from customer_party import Customer
 from math import *
+import pytest
 
 # Creating of customer to use in test
 customer = Customer({"latitude": "52.986375", "user_id": 12, "name": "Christina McArdle", "longitude": "-6.043701"})
@@ -35,6 +36,12 @@ def test_customer_distance_from_3():
     assert floor(customer.distance_from(51, -2)) == 354
 
 
-#
+# Test that is_at_distance_from works (distance of customer to (51, -2) is 354.08)
 def test_customer_is_at_distance_from():
-    assert True
+    assert customer.is_at_distance_from(355, 51, -2) and not customer.is_at_distance_from(354, 51, -2)
+
+
+# Test a TypeError is raised when getting distance passsing a string
+def test_customer_distance_from_type_error():
+    with pytest.raises(TypeError):
+        assert floor(customer.distance_from('51', -2)) == 354 and floor(customer.distance_from(51, '-2')) == 354
