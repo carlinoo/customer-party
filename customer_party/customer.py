@@ -2,6 +2,8 @@ import math
 
 
 class Customer:
+
+    # Constructor
     def __init__(self, data):
         self.latitude = float(data['latitude'])
         self.longitude = float(data['longitude'])
